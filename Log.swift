@@ -138,6 +138,7 @@ open class Log {
 }
 
 ///a free function to make writing to the log much nicer
-public func logw(_ text: String) {
-    Log.logger.write(text)
+public func logw(_ text: String, _ info: String) {
+    let logMessage = "\(text) \(info)"
+    Log.logger.write(logMessage)
 }
