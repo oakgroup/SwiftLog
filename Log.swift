@@ -138,11 +138,22 @@ open class Log {
 }
 
 ///a free function to make writing to the log much nicer
-public func logw(_ text: String, _ info: String) {
-    let logMessage = "\(text) \(info)"
-    Log.logger.write(logMessage)
-}
+//public func logw(_ text: String, _ info: String) {
+//    let logMessage = "\(text) \(info)"
+//    Log.logger.write(logMessage)
+//}
+//
+//public func logw(_ text: String){
+//  logw(text, "")
+//}
 
-public func logw(_ text: String){
-  logw(text, "")
+public func logw(_ args: Any...){
+  let logMessage = args.reduce("") { (currentMessage, nextMessage) -> String in
+    if let nextMessageString = nextMessage as? String{
+      return "\(currentMessage) \(nextMessageString)"
+    }else{
+      return currentMessage
+    }
+  }
+  Log.logger.write(logMessage)
 }
