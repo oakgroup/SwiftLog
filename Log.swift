@@ -142,3 +142,7 @@ public func logw(_ text: String, _ info: String) {
     let logMessage = "\(text) \(info)"
     Log.logger.write(logMessage)
 }
+
+public func logw(_ text: String){
+  logw(text, "")
+}
